@@ -8,6 +8,7 @@ public class HomePage {
     Browser browser;
 
     public void clickInnovationChallenge() {
+        browser.scrollIntoView(linkInnovationChallenge);
         browser.click(linkInnovationChallenge);
     }
 

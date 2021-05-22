@@ -10,8 +10,12 @@ public class LoginPage {
     private static final By buttonLogin = By.cssSelector("[data-test-id='login-btn']");
     public Browser browser = new Browser();
 
-    public LoginPage setEmail(String email) {
+    public LoginPage openUrl() {
         browser.openUrl("https://e2e.innosabi.com/");
+        return this;
+    }
+
+    public LoginPage setEmail(String email) {
         browser.sendKeys(textFieldEmail, email);
         return this;
     }

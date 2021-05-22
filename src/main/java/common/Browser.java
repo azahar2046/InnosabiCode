@@ -1,6 +1,7 @@
 package common;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -96,6 +97,7 @@ public class Browser {
             String text = element.findElement(By.cssSelector(".title")).getText();
             if (title.equalsIgnoreCase(text)) {
                 WebElement commentElement = element.findElement(By.cssSelector("textarea"));
+                scrollIntoView(commentElement);
                 actions.moveToElement(commentElement).click().perform();
                 commentElement.sendKeys(comment);
                 break;
@@ -103,6 +105,33 @@ public class Browser {
 
         }
 
+    }
+
+    public void scrollIntoView(By by) {
+        WebElement element = webDriver.findElement(by);
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) webDriver;
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView();", element);
+    }
+
+    public void scrollIntoView(WebElement webElement) {
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) webDriver;
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView();", webElement);
+    }
+
+    public String getText(By by) {
+        return webDriver.findElement(by).getText();
+    }
+
+    public boolean containsText(By by, String elementText) {
+        List<WebElement> webElements = webDriver.findElements(by);
+        for (WebElement element : webElements) {
+            String text = element.getText();
+            if (elementText.equalsIgnoreCase(text)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public void quitBrowser() {
