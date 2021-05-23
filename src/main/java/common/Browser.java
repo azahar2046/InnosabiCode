@@ -96,7 +96,7 @@ public class Browser {
         Actions actions = new Actions(webDriver);
         for (WebElement element : webElements) {
             String text = element.findElement(By.cssSelector(".title")).getText();
-            if (title.equalsIgnoreCase(text)) {
+            if (!title.equalsIgnoreCase(text)) {
                 WebElement commentElement = element.findElement(By.cssSelector("textarea"));
                 scrollIntoView(commentElement);
                 actions.moveToElement(commentElement).click().perform();

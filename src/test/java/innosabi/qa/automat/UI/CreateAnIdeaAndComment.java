@@ -38,7 +38,7 @@ public class CreateAnIdeaAndComment {
 
 
     @Test
-    public void createInnovationChallenge() {
+    public void createAnIdeaAndComment() {
 
         loginPage.openUrl()
                 .setEmail("md.azahar2046@gmail.com")
