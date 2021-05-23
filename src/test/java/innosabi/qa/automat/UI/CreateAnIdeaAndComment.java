@@ -10,7 +10,7 @@ import pages.IdeaPage;
 import pages.InnovationChallengePage;
 import pages.LoginPage;
 
-public class CreateInnovationChallenge {
+public class CreateAnIdeaAndComment {
     LoginPage loginPage;
     HomePage homePage;
     InnovationChallengePage innovationChallengePage;

@@ -7,13 +7,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 public class Browser {
 
@@ -44,39 +45,38 @@ public class Browser {
         webDriver.get(Url);
     }
 
+    public void waitUntil(By by) {
 
-    public void sendKeys(By by, String text) {
-
+        Function<WebDriver, Boolean> function = webDriver -> {
+            List<WebElement> webElements = webDriver.findElements(by);
+            if (webElements.size() != 0) {
+                return true;
+            }
+            return false;
+        };
         Wait<WebDriver> wait = new FluentWait<>(webDriver)
                 .withTimeout(Duration.ofSeconds(50))
                 .pollingEvery(Duration.ofMillis(500))
-                .ignoring(Exception.class);
+                .ignoring(NoSuchElementException.class);
+        wait.until(function);
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+    }
+
+    public void sendKeys(By by, String text) {
+        waitUntil(by);
         WebElement webElement = webDriver.findElement(by);
         webElement.clear();
         webElement.sendKeys(text);
     }
 
     public void click(By by) {
-        Wait<WebDriver> wait = new FluentWait<>(webDriver)
-                .withTimeout(Duration.ofSeconds(50))
-                .pollingEvery(Duration.ofMillis(500))
-                .ignoring(Exception.class);
-
-        wait.until(ExpectedConditions.elementToBeClickable(by));
+        waitUntil(by);
         WebElement webElement = webDriver.findElement(by);
         Actions actions = new Actions(webDriver);
         actions.moveToElement(webElement).click().perform();
     }
 
     public void clickByText(By by, String text) {
-        Wait<WebDriver> wait = new FluentWait<>(webDriver)
-                .withTimeout(Duration.ofSeconds(50))
-                .pollingEvery(Duration.ofMillis(500))
-                .ignoring(Exception.class);
-
-        wait.until(ExpectedConditions.elementToBeClickable(by));
         List<WebElement> webElements = webDriver.findElements(by);
         Actions actions = new Actions(webDriver);
         for (WebElement element : webElements) {
@@ -120,18 +120,6 @@ public class Browser {
 
     public String getText(By by) {
         return webDriver.findElement(by).getText();
-    }
-
-    public boolean containsText(By by, String elementText) {
-        List<WebElement> webElements = webDriver.findElements(by);
-        for (WebElement element : webElements) {
-            String text = element.getText();
-            if (elementText.equalsIgnoreCase(text)) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     public void quitBrowser() {

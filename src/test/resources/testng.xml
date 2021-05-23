@@ -3,7 +3,7 @@
 <suite name="Innosabi Test Suite">
     <test name="UI tests">
         <classes>
-            <class name="innosabi.qa.automat.UI.CreateInnovationChallenge"/>
+            <class name="innosabi.qa.automat.UI.CreateAnIdeaAndComment"/>
         </classes>
     </test>
 </suite>

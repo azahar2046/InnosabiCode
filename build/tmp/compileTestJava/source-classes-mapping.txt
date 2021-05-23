@@ -1,2 +1,2 @@
-innosabi/qa/automat/UI/CreateInnovationChallenge.java
- innosabi.qa.automat.UI.CreateInnovationChallenge
+innosabi/qa/automat/UI/CreateAnIdeaAndComment.java
+ innosabi.qa.automat.UI.CreateAnIdeaAndComment
