@@ -8,7 +8,7 @@ The test environment it was developed in is
 Test case **Create an idea and comment** can be run from **build.gradle** file.
 
 **Test Steps:** \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Go to https://e2e.innosabi.com.\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Go to https://e2e.innosabi.com. \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Enter email and click on Next button.\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Enter password and click on Login button.\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Click on Innovation challenge card.\
