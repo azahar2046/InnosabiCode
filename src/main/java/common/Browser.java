@@ -91,6 +91,7 @@ public class Browser {
 
 
     public void enterComment(By suggestionCards, String title, String comment) {
+        waitUntil(suggestionCards);
         List<WebElement> webElements = webDriver.findElements(suggestionCards);
         Actions actions = new Actions(webDriver);
         for (WebElement element : webElements) {
