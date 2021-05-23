@@ -14,7 +14,7 @@ Test case **Create an idea and comment** can be run from **build.gradle** file.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Click on Innovation challenge card.\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Click on Submit Idea button.\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Enter idea and description fields.Click Submit button.\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Enter a comment for another idea and click Send button.\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. Enter a comment for another idea and click Send button.
 
 The locators for Web elements are stored in the corresponding classes in ```pages``` package.\
 Random test data is created and can be obtained from the following class ```Utils```.\
